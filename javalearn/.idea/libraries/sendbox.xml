@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sendbox">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/sendbox/build/libs/sendbox.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
