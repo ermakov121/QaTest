@@ -23,12 +23,46 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/javalearn/eat-tests">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="eat-tests" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="eat-tests" type="f1a62948:ProjectNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="eat-tests" type="f1a62948:ProjectNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="eat-tests" type="f1a62948:ProjectNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="eat-tests" type="f1a62948:ProjectNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="test" type="396b929e:GradleViewContributor$SourceSetNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="eat-tests" type="f1a62948:ProjectNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="test" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
               </path>
             </expand>
             <select />
@@ -42,8 +76,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/AuthorizationIsSellerUl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="52" column="64" lean-forward="true" selection-start-line="52" selection-start-column="64" selection-end-line="52" selection-end-column="64" />
+            <state relative-caret-position="530">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#tearDown#0;class#AuthorizationIsSellerUl#0" />
+                <element signature="method#isElementPresent#0;class#AuthorizationIsSellerUl#0" />
+                <element signature="method#elementPresent#0;class#AuthorizationIsSellerUl#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/Test1.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,8 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/Product_test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-901">
-              <caret line="68" column="26" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="26" />
+            <state relative-caret-position="1632">
+              <caret line="107" selection-start-line="107" selection-end-line="107" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,7 +126,10 @@
       <list>
         <option value="$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/UnitedTestClass.java" />
         <option value="$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/Test2.java" />
+        <option value="$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/Test.java" />
+        <option value="$USER_HOME$/Desktop/test6293.xml" />
         <option value="$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/Product_test.java" />
+        <option value="$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/Test1.java" />
         <option value="$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/AuthorizationIsSellerUl.java" />
       </list>
     </option>
@@ -89,10 +141,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="379" />
-    <option name="y" value="-22" />
+    <option name="x" value="2175" />
+    <option name="y" value="-17" />
     <option name="width" value="1318" />
-    <option name="height" value="773" />
+    <option name="height" value="745" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -103,29 +155,42 @@
         <subPane>
           <expand>
             <path>
-              <item name="QaTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eat-tests" type="b2602c69:ProjectViewProjectNode" />
               <item name="eat-tests" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="QaTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eat-tests" type="b2602c69:ProjectViewProjectNode" />
               <item name="eat-tests" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="QaTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eat-tests" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eat-tests" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="eat-tests" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eat-tests" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eat-tests" type="b2602c69:ProjectViewProjectNode" />
               <item name="eat-tests" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="QaTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eat-tests" type="b2602c69:ProjectViewProjectNode" />
               <item name="eat-tests" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="QaTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eat-tests" type="b2602c69:ProjectViewProjectNode" />
               <item name="eat-tests" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
@@ -163,6 +228,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Java" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -176,7 +242,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.Product_test">
+  <component name="RunManager" selected="TestNG.AuthorizationIsSellerUl">
     <configuration name="AuthorizationIsSellerUl" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="eat-tests.test" />
       <option name="PACKAGE_NAME" value="ru.stqa.pft.eat" />
@@ -197,6 +263,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test1" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="eat-tests.test" />
+      <option name="PACKAGE_NAME" value="ru.stqa.pft.eat" />
+      <option name="MAIN_CLASS_NAME" value="ru.stqa.pft.eat.Test1" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UnitedTestClass" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="eat-tests.test" />
       <option name="PACKAGE_NAME" value="ru.stqa.pft.eat" />
@@ -209,55 +285,56 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.Product_test" />
         <item itemvalue="TestNG.AuthorizationIsSellerUl" />
+        <item itemvalue="TestNG.Product_test" />
+        <item itemvalue="TestNG.Test1" />
         <item itemvalue="TestNG.UnitedTestClass" />
       </list>
     </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="Product_test - 2019.02.05 at 18h 00m 40s.xml">
-      <configuration name="Product_test" configurationId="TestNG" />
+    <history-entry file="AuthorizationIsSellerUl - 2019.02.15 at 23h 11m 00s.xml">
+      <configuration name="AuthorizationIsSellerUl" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Product_test - 2019.02.05 at 18h 04m 30s.xml">
-      <configuration name="Product_test" configurationId="TestNG" />
+    <history-entry file="AuthorizationIsSellerUl - 2019.02.15 at 23h 12m 00s.xml">
+      <configuration name="AuthorizationIsSellerUl" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Product_test - 2019.02.05 at 18h 37m 14s.xml">
-      <configuration name="Product_test" configurationId="TestNG" />
+    <history-entry file="AuthorizationIsSellerUl - 2019.02.15 at 23h 14m 13s.xml">
+      <configuration name="AuthorizationIsSellerUl" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Product_test - 2019.02.05 at 18h 40m 54s.xml">
-      <configuration name="Product_test" configurationId="TestNG" />
+    <history-entry file="AuthorizationIsSellerUl - 2019.02.15 at 23h 15m 57s.xml">
+      <configuration name="AuthorizationIsSellerUl" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Product_test - 2019.02.05 at 18h 42m 12s.xml">
-      <configuration name="Product_test" configurationId="TestNG" />
+    <history-entry file="AuthorizationIsSellerUl - 2019.02.15 at 23h 16m 43s.xml">
+      <configuration name="AuthorizationIsSellerUl" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Product_test - 2019.02.05 at 18h 43m 44s.xml">
-      <configuration name="Product_test" configurationId="TestNG" />
+    <history-entry file="AuthorizationIsSellerUl - 2019.02.15 at 23h 20m 05s.xml">
+      <configuration name="AuthorizationIsSellerUl" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Product_test - 2019.02.05 at 18h 50m 48s.xml">
-      <configuration name="Product_test" configurationId="TestNG" />
+    <history-entry file="AuthorizationIsSellerUl - 2019.02.15 at 23h 20m 56s.xml">
+      <configuration name="AuthorizationIsSellerUl" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Product_test - 2019.02.05 at 18h 53m 00s.xml">
-      <configuration name="Product_test" configurationId="TestNG" />
+    <history-entry file="AuthorizationIsSellerUl - 2019.02.16 at 02h 23m 51s.xml">
+      <configuration name="AuthorizationIsSellerUl" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Product_test - 2019.02.05 at 18h 54m 34s.xml">
-      <configuration name="Product_test" configurationId="TestNG" />
+    <history-entry file="AuthorizationIsSellerUl - 2019.02.16 at 02h 25m 00s.xml">
+      <configuration name="AuthorizationIsSellerUl" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Product_test - 2019.02.05 at 18h 56m 10s.xml">
-      <configuration name="Product_test" configurationId="TestNG" />
+    <history-entry file="AuthorizationIsSellerUl - 2019.02.16 at 02h 26m 29s.xml">
+      <configuration name="AuthorizationIsSellerUl" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="1974" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14332967" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10198457" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3229491" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3229491" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2990654" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -275,28 +352,84 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/build.gradle">
+    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/UnitedTestClass.java" />
+    <entry file="file://$USER_HOME$/Desktop/test6293.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        <state relative-caret-position="289">
+          <caret line="24" column="78" lean-forward="true" selection-start-line="24" selection-start-column="78" selection-end-line="24" selection-end-column="78" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/UnitedTestClass.java" />
-    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/Product_test.java">
+    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/gradle/wrapper/gradle-wrapper.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-901">
-          <caret line="68" column="26" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="26" />
+        <state relative-caret-position="85">
+          <caret line="5" column="57" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/src/main/main1.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/gradlew.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="68" column="81" lean-forward="true" selection-start-line="68" selection-start-column="81" selection-end-line="68" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/gradlew">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2399" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/src/test/test.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="38" lean-forward="true" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/AuthorizationIsSellerUl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#tearDown#0;class#AuthorizationIsSellerUl#0" />
+            <element signature="method#isElementPresent#0;class#AuthorizationIsSellerUl#0" />
+            <element signature="method#elementPresent#0;class#AuthorizationIsSellerUl#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/Test1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/AuthorizationIsSellerUl.java">
+    <entry file="file://$PROJECT_DIR$/javalearn/eat-tests/src/test/java/ru/stqa/pft/eat/Product_test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="52" column="64" lean-forward="true" selection-start-line="52" selection-start-column="64" selection-end-line="52" selection-end-column="64" />
+        <state relative-caret-position="1632">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
