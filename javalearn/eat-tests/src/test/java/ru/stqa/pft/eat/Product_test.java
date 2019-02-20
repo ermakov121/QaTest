@@ -1,17 +1,22 @@
 package ru.stqa.pft.eat;
 
 import org.openqa.selenium.*;
-// import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.openqa.selenium.Keys;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
+
+// import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Product_test {
     private WebDriver driver;
@@ -26,64 +31,41 @@ public class Product_test {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
-        driver.manage().window().setSize(new Dimension(1900, 1000));
+        driver.manage().window().maximize();
         driver.get("https://ft01.eat.dks.lanit.ru/");
+
+
     }
 
     @Test
     public void testUntitledTestCase() throws Exception {
         driver.findElement(By.xpath(".//*[@id=\"viewport\"]/div[2]/header/div[1]/div/div[4]/div/div[2]/span")).click();
-        // driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Created with sketchtool.'])[1]/following::span[1]")).click();
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='close'])[1]/following::button[1]")).click();
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='close'])[1]/following::button[1]"))).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Инструкции по регистрации'])[1]/following::button[1]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Войти как'])[1]/following::div[2]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Заказчик 223-ФЗ'])[1]/following::span[2]")).click();
-        //   driver.findElement(By.linkText("Аутентификация")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("(.//*[@href=\"/esialogin?federal_law=0&disable-individual=false&magento_redirect_url=https://ft01.eat.dks.lanit.ru/\"])")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(.//*[@href=\"/esialogin?federal_law=0&disable-individual=false&magento_redirect_url=https://ft01.eat.dks.lanit.ru/\"])"))).click();
         driver.findElement(By.id("mobileOrEmail")).click();
         driver.findElement(By.id("mobileOrEmail")).clear();
         driver.findElement(By.id("mobileOrEmail")).sendKeys("+79537443839");
         driver.findElement(By.id("password")).click();
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("Holloway121");
-
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Чужой компьютер'])[1]/following::span[1]")).click();
 
         // выбираю ООО Сейфлайн
 
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)=concat('ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ ', '\"', 'СЕЙФЛАЙН', '\"', '')])[1]/following::p[1]")).click();
-
-        // выбираю ФЛ
-        //   driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='для входа в ЕАТ'])[1]/following::label[1]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)=concat('ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ ', '\"', 'СЕЙФЛАЙН', '\"', '')])[1]/following::button[1]")).click();
 
-        Thread.sleep(5000);
-        boolean x = elementPresent();
-        if (x = true){
-            //   driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='ОГРН'])[3]/following::span[2]"));
-            driver.findElement(By.xpath(".//*[text()='ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"СЕЙФЛАЙН\"']/..")).click();
-            driver.findElement(By.cssSelector(".btn.btn--primary")).click();
-        }
+        // Выбираю создание ТРУ
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Избранное'])[1]/following::span[1]"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Мои товары, работы, услуги'])[1]/following::button[1]"))).click();
 
-        // Перешли в ЛК Поставщика
-     //   driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Избранное'])[1]/following::span[1]")).click();
-        WebElement element3 =  driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Избранное'])[1]/following::span[1]"));
-        executor.executeScript("arguments[0].click()", element3);
-     //   driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Мои товары, работы, услуги'])[1]/following::button[1]")).click();
-        WebElement element4 =  driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Мои товары, работы, услуги'])[1]/following::button[1]"));
-        executor.executeScript("arguments[0].click()", element4);
-
-        // Перешли к созданию ТРУ
-      //  driver.findElement(By.linkText("ТЕСТОВАЯ КАТЕГОРИЯ")).click();
-      //  driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Код ОКПД2: 26.51.82.190'])[1]/following::button[1]")).click();
-
+        // Перешли к созданию ТРУ. Заполняю форму создания ТРУ
         driver.findElement(By.xpath("(.//*[@id=\"product-addition\"]/div[3]/div/div/div/div/div[2]/div[1]/ul/li[10]/div/div)")).click();
-
         driver.findElement(By.xpath("( //*[@id=\"product-addition\"]/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div/div[1]/button/span)")).click();
-      //  driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[1]/following::input[1]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[1]/following::input[1]")).clear();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[1]/following::input[1]")).sendKeys("Тест0502");
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Торговое наименование'])[1]/following::input[1]")).click();
@@ -104,9 +86,10 @@ public class Product_test {
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Не облагается'])[1]/following::span[6]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[4]/following::input[1]")).clear();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[4]/following::input[1]")).sendKeys("100");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Дата окончания применения'])[1]/following::input[1]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Вс'])[1]/following::span[18]")).click();
-      //  driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Товары'])[1]/following::label[1]")).click();
+
+        // Остановился здесь. Надо придумать как переходить на следующий месяц в календаре
+        driver.findElement(By.xpath(".//div[@class='vdp-datepicker input-form input-form--medium']//input[1]")).click();
+        driver.findElement(By.xpath(".//div[@class='vdp-datepicker input-form input-form--medium']//input[1]")).sendKeys("25112025");
         WebElement upload = driver.findElement(By.id("file"));
         upload.sendKeys("C:\\Users\\k.ermakov\\Desktop\\тест типов\\картинка на предложения.jpg");
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Единица измерения'])[2]/following::span[1]")).click();
@@ -156,9 +139,7 @@ public class Product_test {
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::input[5]")).clear();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::input[5]")).sendKeys("тест");
         driver.findElement(By.name("delivery[0][times]")).click();
-      //  driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::i[1]")).click();
-        WebElement element2 =  driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::i[1]"));
-        executor.executeScript("arguments[0].click()", element2);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::i[1]"))).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сохранить'])[1]/following::span[1]")).click();
     }
 
@@ -167,6 +148,12 @@ public class Product_test {
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
      //   driver.quit();
+        String url1 ="jdbc:mysql://192.168.168.6:3306/magento2";
+        String dbClass = "com.mysql.jdbc.Driver";
+        Class.forName(dbClass).newInstance();
+        Connection con = DriverManager.getConnection(url1, "root", "tmp");
+        Statement stmt = con.createStatement();
+   //     ResultSet rs = stmt.executeQuery("select * from b2bclient_organization where organization_id = 919786;");
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);

@@ -53,8 +53,6 @@ public class AuthorizationIsSellerUl {
         // выбираю ООО Сейфлайн
 
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)=concat('ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ ', '\"', 'СЕЙФЛАЙН', '\"', '')])[1]/following::p[1]")).click();
-
-        // выбираю ФЛ
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)=concat('ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ ', '\"', 'СЕЙФЛАЙН', '\"', '')])[1]/following::button[1]")).click();
         Thread.sleep(5000);
         boolean x = elementPresent();
@@ -66,13 +64,13 @@ public class AuthorizationIsSellerUl {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
-        String expected = ("ООО \"ЕЙФЛАЙН\"");
+        String expected = ("ООО \"СЕЙФЛАЙН\"");
         String element = driver.findElement(By.cssSelector(".fs14.lh24")).getText();
         if (element == expected){
-            System.out.println("Аутентификация провалена");
+            System.out.println("Аутентификация успешна");
         }
         else{
-            System.out.println("Аутентификация успешна");
+            System.out.println("Аутентификация провалена");
         }
         driver.quit();
     }
