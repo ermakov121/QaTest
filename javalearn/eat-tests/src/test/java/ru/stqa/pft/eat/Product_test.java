@@ -1,25 +1,32 @@
 package ru.stqa.pft.eat;
 
+import com.google.errorprone.annotations.Var;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.openqa.selenium.Keys;
+import ru.stqa.pft.eat.AuthorizationIsSellerUl;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import static java.lang.Thread.sleep;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
 // import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class Product_test {
-    private WebDriver driver;
+public class Product_test extends AuthorizationIsSellerUl{
+  //  private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
@@ -32,146 +39,116 @@ public class Product_test {
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get("https://ft01.eat.dks.lanit.ru/");
+        driver.get(Variables.url_ft);
 
 
     }
 
     @Test
     public void testUntitledTestCase() throws Exception {
-        driver.findElement(By.xpath(".//*[@id=\"viewport\"]/div[2]/header/div[1]/div/div[4]/div/div[2]/span")).click();
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='close'])[1]/following::button[1]"))).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Инструкции по регистрации'])[1]/following::button[1]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Войти как'])[1]/following::div[2]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Заказчик 223-ФЗ'])[1]/following::span[2]")).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(.//*[@href=\"/esialogin?federal_law=0&disable-individual=false&magento_redirect_url=https://ft01.eat.dks.lanit.ru/\"])"))).click();
-        driver.findElement(By.id("mobileOrEmail")).click();
-        driver.findElement(By.id("mobileOrEmail")).clear();
-        driver.findElement(By.id("mobileOrEmail")).sendKeys("+79537443839");
-        driver.findElement(By.id("password")).click();
-        driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("Holloway121");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Чужой компьютер'])[1]/following::span[1]")).click();
+        /* Аккредитация поставщика */
+        avto(Variables.fl);
 
-        // выбираю ООО Сейфлайн
+        /* Создание ТРУ */
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.elementToBeClickable(Variables.my_TRU)).click();  // Нажимаю на вкладку "Мои предложения"
+        driver.findElement(Variables.add_TRU).click();  // Нажимаю кнопку "Добавить предложение"
+        driver.findElement(Variables.categories).click();  // Выбираю категорию
+        wait.until(ExpectedConditions.elementToBeClickable(Variables.kod_EAT)).click();  // Нажимаю на поле фильтра "Код ЕАТ"
+        driver.findElement(Variables.kod_EAT).clear(); // Очищаю поле фильтра "Код ЕАТ"
+        driver.findElement(Variables.kod_EAT).sendKeys("19.20.29.160-00000001");  // Ввожу в поле "Код ЕАТ" код шаблона
+        driver.findElement(Variables.find).click();  // Нажимаю на кнопку "Найти" в фильтре
+        wait.until(ExpectedConditions.elementToBeClickable(Variables.choose)).click();  // Нажимаю "Выбрать" на шаблоне
+        sleep(1000);
+        driver.findElement(Variables.short_title).click();  // Нажимаю на поле ввода "Краткое наименование"
+        driver.findElement(Variables.short_title).clear();  // Очищаю поле "Краткое наименование"
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy_hh:mm:ss");
+        String date_now = format.format(date);
+        String product_name_expected = "Автотест_" + date_now;
+        driver.findElement(Variables.short_title).sendKeys(product_name_expected);  // Ввожу значение в поле "Краткое наименование" название ТРУ
+        driver.findElement(Variables.trade).click();  // Нажимаю на поле ввода "Торговое наименование"
+        driver.findElement(Variables.trade).clear();  // Очищаю поле "Торговое наименование"
+        driver.findElement(Variables.trade).sendKeys("Торговое наименование_тест");  // Ввожу значение в поле "Торговое наименование"
+        driver.findElement(Variables.place).click();  // Нажимаю на поле ввода "Наименование места происхождения товара"
+        driver.findElement(Variables.place).clear();  // Очищаю поле "Наименование места происхождения товара"
+        driver.findElement(Variables.place).sendKeys("Наименование места происхождения товара_тест");  // Ввожу значение в поле "Наименование места происхождения товара"
+        driver.findElement(Variables.inf_manuf).click();  // Нажимаю на поле ввода "Информация о производителе товара"
+        driver.findElement(Variables.inf_manuf).clear();  // Очищаю поле "Информация о производителе товара"
+        driver.findElement(Variables.inf_manuf).sendKeys("Информация о производителе товара_тест");  // Ввожу значение в поле "Информация о производителе товара"
+        driver.findElement(Variables.trade_2).click();  // Нажимаю на поле ввода "Фирменное наименование"
+        driver.findElement(Variables.trade_2).clear();  // Очищаю поле "Фирменное наименование"
+        driver.findElement(Variables.trade_2).sendKeys("Фирменное наименование_тест");  // Ввожу значение в поле "Фирменное наименование"
+        driver.findElement(Variables.price).click();  // Нажимаю на поле ввода "Цена за единицу"
+        driver.findElement(Variables.price).clear();  // Очищаю поле "Цена за единицу"
+        driver.findElement(Variables.price).sendKeys("150");  // Ввожу значение в поле "Цена за единицу"
+        driver.findElement(Variables.miltuselect).click();  // Нажимаю селект в поле "НДС"
+        driver.findElement(Variables.nds_choose).click();  // Выбираю значение поля "НДС"
+        driver.findElement(Variables.end_date).click();  // Ввыбираю поле "Дата окончания применения"
+        driver.findElement(Variables.end_date).sendKeys("25-11-2025");  // Ввожу значение в поле "Дата окончания применения"
+        driver.findElement(Variables.file_upload).sendKeys("C:\\Users\\k.ermakov\\Desktop\\тест типов\\картинка на предложения.jpg");  // Гружу изображение ТРУ
+        driver.findElement(Variables.add_char).click();  // Нажимаю кнопку "Добавить" характеристики
+        driver.findElement(Variables.name_char).click();  // Нажмаю в поле ввода "Наименование характеристики"
+        driver.findElement(Variables.name_char).clear();  // Очищаю поле ввода "Наименование характеристики"
+        driver.findElement(Variables.name_char).sendKeys("Качественная хараетеристика_тест");  // Ввожу название качественной харктеристики
+        driver.findElement(Variables.multiselect).click();  // Нажимаю на селект выбора типа характеристики
+        driver.findElement(Variables.quality).click();  // Выбираю качественную характристику
+        driver.findElement(Variables.value_char).click();  // Нажимаю на поле ввода "Значение характеристики"
+        driver.findElement(Variables.value_char).sendKeys("Значение качественной характеристики_тест");  // Ввожу значение в поле "Значение характеристики"
+        driver.findElement(Variables.save).click();  // Сохраняю характеристику
+        driver.findElement(Variables.add_adres).click();  // Нажимаю кнопку "Добавить" адрес поставки ТРУ
+        driver.findElement(Variables.place_2).click();  // Нажимаю на поле ввода места поставки (ФИАС)
+        driver.findElement(Variables.place_2).sendKeys("Рязань");  // Ввожу в поле места поставки (ФИАС)
+        sleep(2000);
+        driver.findElement(Variables.place_2).sendKeys(Keys.DOWN, Keys.ENTER);  // Выбираю адрес из ФИАС
+        driver.findElement(Variables.cost).click();  // Нажимаю на поле ввода стоимости поставки ТРУ
+        driver.findElement(Variables.cost).clear(); // Очищаю поле ввода стоимости поставки ТРУ
+        driver.findElement(Variables.cost).sendKeys("300");  // Ввожу стоимость поставки ТРУ
+        driver.findElement(Variables.delivery_term).click();  // Нажимаю на поле ввода "Условия поставки"
+        driver.findElement(Variables.delivery_term).clear();  // очищаю поле ввода "Условия поставки"
+        driver.findElement(Variables.delivery_term).sendKeys("Условия поставки ТРУ_тест");  // Ввожу значение в поле ввода "Условия поставки"
+        driver.findElement(Variables.save).click();  // Сохраняю место поставки ТРУ
+        driver.findElement(Variables.include_catalog).click();  // Нажимаю кнопку "Включить в каталог"
 
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)=concat('ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ ', '\"', 'СЕЙФЛАЙН', '\"', '')])[1]/following::p[1]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)=concat('ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ ', '\"', 'СЕЙФЛАЙН', '\"', '')])[1]/following::button[1]")).click();
-
-        // Выбираю создание ТРУ
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Избранное'])[1]/following::span[1]"))).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Мои товары, работы, услуги'])[1]/following::button[1]"))).click();
-
-        // Перешли к созданию ТРУ. Заполняю форму создания ТРУ
-        driver.findElement(By.xpath("(.//*[@id=\"product-addition\"]/div[3]/div/div/div/div/div[2]/div[1]/ul/li[10]/div/div)")).click();
-        driver.findElement(By.xpath("( //*[@id=\"product-addition\"]/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div/div[1]/button/span)")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[1]/following::input[1]")).clear();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[1]/following::input[1]")).sendKeys("Тест0502");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Торговое наименование'])[1]/following::input[1]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Торговое наименование'])[1]/following::input[1]")).clear();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Торговое наименование'])[1]/following::input[1]")).sendKeys("Торговое_тест");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Наименование места происхождения товара'])[1]/following::input[1]")).clear();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Наименование места происхождения товара'])[1]/following::input[1]")).sendKeys("Место происхождение_тест");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Информация о производителе товара'])[1]/following::input[1]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Информация о производителе товара'])[1]/following::input[1]")).clear();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Информация о производителе товара'])[1]/following::input[1]")).sendKeys("Производитель_тест");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Фирменное наименование (при наличии)'])[1]/following::input[1]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Фирменное наименование (при наличии)'])[1]/following::input[1]")).clear();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Фирменное наименование (при наличии)'])[1]/following::input[1]")).sendKeys("Фирменное наименование_тест");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[2]/following::input[1]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[2]/following::input[1]")).clear();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[2]/following::input[1]")).sendKeys("150");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[3]/following::div[3]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Не облагается'])[1]/following::span[6]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[4]/following::input[1]")).clear();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='*'])[4]/following::input[1]")).sendKeys("100");
-
-        // Остановился здесь. Надо придумать как переходить на следующий месяц в календаре
-        driver.findElement(By.xpath(".//div[@class='vdp-datepicker input-form input-form--medium']//input[1]")).click();
-        driver.findElement(By.xpath(".//div[@class='vdp-datepicker input-form input-form--medium']//input[1]")).sendKeys("25112025");
-        WebElement upload = driver.findElement(By.id("file"));
-        upload.sendKeys("C:\\Users\\k.ermakov\\Desktop\\тест типов\\картинка на предложения.jpg");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Единица измерения'])[2]/following::span[1]")).click();
-        driver.findElement(By.name("productOfferExtraFeatures[0][name]")).click();
-        driver.findElement(By.name("productOfferExtraFeatures[0][name]")).click();
-        driver.findElement(By.name("productOfferExtraFeatures[0][name]")).clear();
-        driver.findElement(By.name("productOfferExtraFeatures[0][name]")).sendKeys("Хар1");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Единица измерения'])[2]/following::div[2]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Качественная'])[1]/following::span[2]")).click();
-        driver.findElement(By.name("productOfferExtraFeatures[0][qualityValue][]")).click();
-        driver.findElement(By.name("productOfferExtraFeatures[0][qualityValue][]")).clear();
-        driver.findElement(By.name("productOfferExtraFeatures[0][qualityValue][]")).sendKeys("тест1");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='+'])[1]/following::div[3]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Дециметр'])[1]/following::span[2]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='List is empty.'])[3]/following::i[1]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Редактировать'])[1]/following::span[1]")).click();
-        driver.findElement(By.name("productOfferExtraFeatures[1][name]")).click();
-        driver.findElement(By.name("productOfferExtraFeatures[1][name]")).clear();
-        driver.findElement(By.name("productOfferExtraFeatures[1][name]")).sendKeys("Хар2");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Редактировать'])[1]/following::div[2]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Качественная'])[1]/following::span[2]")).click();
-        driver.findElement(By.name("productOfferExtraFeatures[1][qualityValue][]")).click();
-        driver.findElement(By.name("productOfferExtraFeatures[1][qualityValue][]")).clear();
-        driver.findElement(By.name("productOfferExtraFeatures[1][qualityValue][]")).sendKeys("тест2");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='List is empty.'])[2]/following::div[3]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='×'])[1]/following::input[1]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='×'])[1]/following::input[1]")).clear();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='×'])[1]/following::input[1]")).sendKeys("тест3");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='+'])[1]/following::div[3]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='+'])[1]/following::span[2]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='List is empty.'])[3]/following::i[1]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::span[1]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::input[1]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::input[1]")).sendKeys(Keys.DOWN);
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::input[1]")).clear();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::input[1]")).sendKeys("обл Рязанская, г Рязань");
-        Thread.sleep(5000);
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::input[1]")).sendKeys(Keys.DOWN);
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::input[1]")).sendKeys(Keys.ENTER);
-        driver.findElement(By.name("delivery[0][transport_cost]")).click();
-        driver.findElement(By.name("delivery[0][transport_cost]")).clear();
-        driver.findElement(By.name("delivery[0][transport_cost]")).sendKeys("20");
-        driver.findElement(By.name("delivery[0][max]")).click();
-        driver.findElement(By.name("delivery[0][max]")).clear();
-        driver.findElement(By.name("delivery[0][max]")).sendKeys("20");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::input[5]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::input[5]")).clear();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::input[5]")).sendKeys("тест");
-        driver.findElement(By.name("delivery[0][times]")).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сроки поставки, дни'])[1]/following::i[1]"))).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Сохранить'])[1]/following::span[1]")).click();
-    }
+        // Проверка
+        String actual = driver.findElement(By.xpath(".//td[contains(., '" + product_name_expected + "')]")).getText();
+        System.out.println(actual);
+        try {
+            assertEquals(product_name_expected, actual);
+            System.out.println("Успешное создание ТРУ");
+        } catch (AssertionError assertionError) {
+            System.out.println("ТРУ создалось неверно");
+        }
 
 
 
-    @AfterClass(alwaysRun = true)
-    public void tearDown() throws Exception {
-     //   driver.quit();
-        String url1 ="jdbc:mysql://192.168.168.6:3306/magento2";
+/*
+        String url1 ="jdbc:mysql://192.168.168.5:3306/akeneo_pim";
         String dbClass = "com.mysql.jdbc.Driver";
         Class.forName(dbClass).newInstance();
-        Connection con = DriverManager.getConnection(url1, "root", "tmp");
+        Connection con = (Connection) DriverManager.getConnection(url1, "akeneo_pim_1", "krlatq9bakd7e7pk");
         Statement stmt = con.createStatement();
-   //     ResultSet rs = stmt.executeQuery("select * from b2bclient_organization where organization_id = 919786;");
-        String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
-            fail(verificationErrorString);
+        ResultSet rs = stmt.executeQuery("SELECT json_extract(raw_values, '$.\"Product_name\".\"<all_channels>\".\"<all_locales>\"') as 'Наименование ТРУ' FROM akeneo_pim.pim_catalog_product\n" +
+                "where json_extract(raw_values, '$.\"Product_name\".\"<all_channels>\".\"<all_locales>\"') = 'Автотест_03.03.2019_02:06:42';");
+        String product_name = rs.getString(1);
+        System. out.println(product_name);
+        try{
+            assertEquals(product_name_expected, product_name);
+            System.out.println("Успешное создание ТРУ");
         }
+        catch (AssertionError assertionError){
+            System.out.println("ТРУ создалось неверно");
+        }
+
+*/
+    }
+    @AfterClass(alwaysRun = true)
+    public void tearDown() {
+
     }
 
-    private boolean elementPresent() {
-        try {
-            String expected = "Выберите организацию";
-            String element = driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='close'])[1]/following::div[4]")).getText();
-            assertEquals(element, expected);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
 
-    private boolean isElementPresent(By by) {
+    public boolean isElementPresent(By by) {
         try {
             driver.findElement(by);
             return true;
